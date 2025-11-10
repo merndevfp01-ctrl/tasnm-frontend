@@ -8,7 +8,9 @@ function App() {
   return (
     <Router>
       <Header />
-      <Routes />
+      <div className='mt-10 md:mt-32'>
+        <Routes />
+      </div>
       <Footer />
     </Router>
   )

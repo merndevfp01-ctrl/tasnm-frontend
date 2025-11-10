@@ -2,6 +2,7 @@ import { Clock, DollarSign, HeartIcon, Lock, Menu, Phone, Search, ShoppingCart, 
 import react from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import PageDropdown from '../components/PagesDropdown';
 
 function Header() {
     const [scrolled, setScrolled] = useState(false);
@@ -64,49 +65,53 @@ function Header() {
                 </div>
             </div>
             <nav className={` transition-all duration-500 w-full flex justify-between items-center py-2 px-6 md:px-14
-            ${scrolled ? "bg-black shadow-md" : "bg-black/80"}
+            ${scrolled ? "bg-black shadow-md" : "bg-black"}
                 `}>
                 <img src="src/assets/logo.png" alt="" className='h-6 w-12 md:h-14 md:w-24 object-contain' />
-                <div className='hidden md:flex justify-between items-center gap-10 text-white'>
+                <div className='hidden md:flex justify-between items-center gap-10 text-sm text-white'>
                     <Link
                         to={"/"}
-                        className='hover:text-gray-300'
+                        className='hover:text-orange-600'
                     >
                         HOME
                     </Link>
                     <Link
                         to={"/"}
-                        className='hover:text-gray-300'
+                        className='hover:text-orange-600'
                     >
                         SHOP
                     </Link>
                     <Link
-                        to={"/"}
-                        className='hover:text-gray-300'
+                        to={"/lookbook"}
+                        className='hover:text-orange-600'
                     >
                         LOOKBOOK
                     </Link>
                     <Link
                         to={"/blog"}
-                        className='hover:text-gray-300'
+                        className='hover:text-orange-600'
                     >
                         BLOG
                     </Link>
-                    <Link
+                    {/* <Link
                         to={"/"}
                         className='hover:text-gray-300'
                     >
                         PAGES
-                    </Link>
+                    </Link> */}
+                    <div className='relative group cursor-pointer'>
+                        <span className='hover:text-orange-600'>PAGES</span>
+                        <PageDropdown/>
+                    </div>
                     <Link
                         to={"/about"}
-                        className='hover:text-gray-300'
+                        className='hover:text-orange-600'
                     >
                         ABOUT
                     </Link>
                     <Link
                         to={"/contact"}
-                        className='hover:text-gray-300'
+                        className='hover:text-orange-600'
                     >
                         CONTACT
                     </Link>

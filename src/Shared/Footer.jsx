@@ -11,7 +11,7 @@ import { AiFillInstagram } from "react-icons/ai";
 function Footer() {
     return (
         <div className="w-full pt-16 bg-[#2a2a2a] text-white">
-            <div className="flex flex-col md:flex-row justify-start md:justify-between items-start gap-8 border-b border-gray-600 px-20">
+            <div className="flex flex-col md:flex-row justify-start md:justify-between items-start gap-8 border-b border-gray-600 px-10 md:px-20">
                 {/* Contact */}
                 <div className="flex flex-col mb-5 w-full">
                     <h3 className="text-lg font-semibold border-b border-gray-600 pb-2">CONTACT US</h3>

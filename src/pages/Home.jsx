@@ -43,7 +43,7 @@ function Home() {
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     width: "100vw",
-                    height: "80vh"
+                    height: "65vh"
                 }}>
                 <div className="flex flex-col justify-center items-center text-white space-y-2 md:ml-64 bg-black/40 backdrop-blur-sm rounded-lg p-6">
                     <p className="text-lg md:text-3xl font-semibold">NEW COLLECTION</p>

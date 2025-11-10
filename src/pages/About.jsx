@@ -110,7 +110,6 @@ function About() {
                         </SwiperSlide>
                     ))}
                 </Swiper>
-
             </div>
             {/* Creattive Member */}
             <div className="flex flex-col justify-center items-center text-center p-8 md:p-20">
