@@ -4,7 +4,7 @@ function Shipping() {
     return (
         <>
             {/* Shipping Section */}
-            < div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 p-20" >
+            < div className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 text-sm p-20" >
                 <div className="flex flex-col justify-center items-center text-center space-y-3">
                     <div className="border border-black rounded-full p-2 hover:border-orange-600 hover:text-white hover:bg-orange-600 duration-600">
                         <Plane />

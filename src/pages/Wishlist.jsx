@@ -1,122 +1,56 @@
-import { X } from "lucide-react"
+import { Trash, X } from "lucide-react"
+import { FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaRegStarHalfStroke, FaStar, FaTwitter } from "react-icons/fa6"
 import { Link } from "react-router-dom"
+
+const products = [
+    { id: 1, name: 'Classic T-Shirt', price: '$25', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/2.jpg' },
+    { id: 2, name: 'Leather Shoes', price: '$80', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/10.jpg' },
+    { id: 3, name: 'Stylish Bag', price: '$50', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/14.jpg' },
+    { id: 4, name: 'Denim Jacket', price: '$65', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/8.jpg' },
+    { id: 5, name: 'Denim Jacket', price: '$65', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/6.jpg' },
+    { id: 6, name: 'Classic T-Shirt', price: '$25', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/4.jpg' },
+    { id: 7, name: 'Stylish Bag', price: '$50', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/14.jpg' },
+    { id: 8, name: 'Denim Jacket', price: '$65', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/8.jpg' },
+    { id: 9, name: 'Leather Shoes', price: '$80', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/8.jpg' },
+    { id: 10, name: 'Running Sneakers', price: '$60', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/4.jpg' },
+    { id: 11, name: 'Stylish Bag', price: '$50', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/14.jpg' },
+    { id: 12, name: 'Denim Jacket', price: '$65', image: 'https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/8.jpg' },
+];
 
 function Wishlist() {
     return (
-        <div className="w-full">
-            <div className="relative w-full h-96 overflow-hidden shadow-lg group">
-                <img
-                    src="https://as1.ftcdn.net/v2/jpg/17/04/32/58/1000_F_1704325805_aLhcj2PTtIt1q8zHJA6lJH0ILMehjxWl.jpg"
-                    alt="bag"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40"></div>
-                <div className="absolute inset-0  flex flex-col item-center justify-center text-center text-white overlay">
-                    <h1 className="text-4xl">WISHLIST</h1>
-                    <div className="flex justify-center items-center gap-2 text-sm mt-5">
-                        <Link to={"/"}>
-                            HOME
-                        </Link> |
-                        <p>Wishlist</p>
-                    </div>
-                </div>
+        <div className="w-full py-10 px-10 md:px-20 space-y-4 md:space-y-6">
+            <div className="flex items-center gap-2">
+                <Link
+                    to={"/"}
+                    className="text-gray-600">
+                    Home
+                </Link>
+                /
+                <p>Wishlist</p>
             </div>
-            {/* Table */}
-            <div className="p-20">
-                <table className="w-full border">
-                    <thead>
-                        <tr className="bg-gray-100">
-                            <th className="border-r"></th>
-                            <th className="text-sm font-light border-r py-4">Images</th>
-                            <th className="text-sm font-light border-r py-4">Product Name</th>
-                            <th className="text-sm font-light border-r py-4">Unit Price</th>
-                            <th className="text-sm font-light border-r py-4">Stock Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr className="border-b text-center">
-                            <td className="p-4 border-r"><X /></td>
-                            <td className="p-4 border-r">
-                                <img
-                                    src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/10.jpg"
-                                    alt=""
-                                    className="h-28 w-20"
-                                />
-                            </td>
-                            <td className="p-4 border-r">
-                                <div className="flex justify-between text-sm text-gray-500 items-center">
-                                    <p>VINTAGE SHOE</p>
-                                    <button className="border border-gray-400 py-1 px-4 hover:text-white hover:bg-orange-600 hover:duration-500 hover:border-orange-600">
-                                        QUICK VIEW
-                                    </button>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+                {products.map((data) => (
+                    <div className="space-y-4">
+                        <img
+                            src={data.image}
+                            alt=""
+                            className=""
+                        />
+                        <div>
+                            <h3 className="">{data.name}</h3>
+                            <div className="flex justify-between items-center">
+                                <p className="font-semibold">{data.price}</p>
+                                <div className="flex items-center gap-1">
+                                    <FaStar /><FaStar /><FaStar /><FaStar /><FaRegStarHalfStroke />
                                 </div>
-                            </td>
-                            <td className="p-4 border-r">$180.00</td>
-                            <td className="p-4 border-r text-green-600">In Stock</td>
-                            <td className="p-4 border-r">
-                                <button className="border border-gray-400 py-1 px-4 hover:text-white hover:bg-orange-600 hover:duration-500 hover:border-orange-600">
-                                    ADD TO CART
-                                </button>
-                            </td>
-                        </tr>
-                        <tr className="border-b text-center">
-                            <td className="p-4 border-r"><X /></td>
-                            <td className="p-4 border-r">
-                                <img
-                                    src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/10.jpg"
-                                    alt=""
-                                    className="h-28 w-20"
-                                />
-                            </td>
-                            <td className="p-4 border-r">
-                                <div className="flex justify-between text-sm text-gray-500 items-center">
-                                    <p>VINTAGE SHOE</p>
-                                    <button className="border border-gray-400 py-1 px-4 hover:text-white hover:bg-orange-600 hover:duration-500 hover:border-orange-600">
-                                        QUICK VIEW
-                                    </button>
-                                </div>
-                            </td>
-                            <td className="p-4 border-r">$180.00</td>
-                            <td className="p-4 border-r text-green-600">In Stock</td>
-                            <td className="p-4 border-r">
-                                <button className="border border-gray-400 py-1 px-4 hover:text-white hover:bg-orange-600 hover:duration-500 hover:border-orange-600">
-                                    ADD TO CART
-                                </button>
-                            </td>
-                        </tr>
-                        <tr className="border-b text-center">
-                            <td className="p-4 border-r"><X /></td>
-                            <td className="p-4 border-r">
-                                <img
-                                    src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/10.jpg"
-                                    alt=""
-                                    className="h-28 w-20"
-                                />
-                            </td>
-                            <td className="p-4 border-r">
-                                <div className="flex justify-between text-sm text-gray-500 items-center">
-                                    <p>VINTAGE SHOE</p>
-                                    <button className="border border-gray-400 py-1 px-4 hover:text-white hover:bg-orange-600 hover:duration-500 hover:border-orange-600">
-                                        QUICK VIEW
-                                    </button>
-                                </div>
-                            </td>
-                            <td className="p-4 border-r">$180.00</td>
-                            <td className="p-4 border-r text-green-600">In Stock</td>
-                            <td className="p-4 border-r">
-                                <button className="border border-gray-400 py-1 px-4 hover:text-white hover:bg-orange-600 hover:duration-500 hover:border-orange-600">
-                                    ADD TO CART
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="p-4">
-                                <p>SHARE ON:</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            </div>
+                        </div>
+                        <button className="w-full text-center text-xs rounded-lg py-2 border text-orange-600">
+                            MOVE TO BAG
+                        </button>
+                    </div>
+                ))}
             </div>
         </div>
     )

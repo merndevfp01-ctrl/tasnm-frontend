@@ -37,7 +37,7 @@ function Home() {
     const [index, setIndex] = useState(0);
     return (
         <div className="w-full">
-             <div className="w-full flex justify-center items-center"
+            <div className="w-full flex justify-center items-center"
                 style={{
                     backgroundImage: "url('src/assets/men.png')",
                     backgroundSize: "cover",
@@ -126,16 +126,25 @@ function Home() {
                 <h1 className="text-2xl text-orange-600 text-center font-bold tracking-wide">
                     FEATURED PRODUCTS
                 </h1>
-                <TabSection/>
+                <TabSection />
             </div>
 
             {/* Testimonials */}
-            <div className="relative w-full h-full flex flex-col justify-center items-center">
-                <img
+            <div className="relative w-full h-full flex flex-col justify-center items-center"
+                style={{
+                    backgroundImage: "url('https://plus.unsplash.com/premium_photo-1681400279564-729d7fde5f99?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8d2FsbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=400')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundAttachment:"fixed",
+                    width: "100vw",
+                    height: "65vh"
+                }}>
+            
+                {/* <img
                     src="https://plus.unsplash.com/premium_photo-1681400279564-729d7fde5f99?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8d2FsbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=400"
                     alt=""
                     className="w-full h-[500px] object-cover"
-                />
+                /> */}
                 <div className="absolute inset-0 bg-black/40"></div>
                 <div className="absolute inset-0 px-10 md:px-36 py-10 flex flex-col justify-center items-center text-center">
                     <h1 className="flex flex-col gap-1 justify-center items-center text-3xl text-white font-bold">
@@ -144,7 +153,7 @@ function Home() {
                     </h1>
                     <Swiper pagination={true} modules={[Pagination]} className="mySwiper mt-6">
                         {slider.map((data, i) => (
-                            <SwiperSlide key={i} className="p-6 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 hover:scale-105 transition-all duration-500">
+                            <SwiperSlide key={i} className="p-6 rounded-2xl shadow-lg hover:scale-105 transition-all duration-500">
                                 <p className="text-center text-white mt-4 italic">
                                     {data.description}
                                 </p>
@@ -174,48 +183,48 @@ function Home() {
                     </div>
                 </h1>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8">
-                    <div className="space-y-4 hover:scale-105 transition-all duration-300 shadow-lg rounded-xl overflow-hidden bg-white p-4">
-                        <img src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/1.jpg" alt="" className="rounded-md"/>
+                    <div className="space-y-4 hover:scale-105 transition-all duration-300">
+                        <img src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/1.jpg" alt="" className="rounded-md" />
                         <div>
                             <h3 className="font-semibold">PRODUCT TITLE</h3>
                             <div className="flex justify-between items-center">
-                                <p className="font-bold text-orange-600">$52.00</p>
+                                <p className="font-semibold text-orange-600">$52.00</p>
                                 <div className="flex items-center gap-1">
                                     <FaStar /><FaStar /><FaStar /><FaStar /><FaRegStarHalfStroke />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="space-y-4 hover:scale-105 transition-all duration-300 shadow-lg rounded-xl overflow-hidden bg-white p-4">
-                        <img src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/3.jpg" alt="" className="rounded-md"/>
+                    <div className="space-y-4 hover:scale-105 transition-all duration-300">
+                        <img src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/3.jpg" alt="" className="rounded-md" />
                         <div>
                             <h3 className="font-semibold">PRODUCT TITLE</h3>
                             <div className="flex justify-between items-center">
-                                <p className="font-bold text-orange-600">$52.00</p>
+                                <p className="font-semibold text-orange-600">$52.00</p>
                                 <div className="flex items-center gap-1">
                                     <FaStar /><FaStar /><FaStar /><FaStar /><FaRegStarHalfStroke />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="space-y-4 hover:scale-105 transition-all duration-300 shadow-lg rounded-xl overflow-hidden bg-white p-4">
-                        <img src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/5.jpg" alt="" className="rounded-md"/>
+                    <div className="space-y-4 hover:scale-105 transition-all duration-300 ">
+                        <img src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/5.jpg" alt="" className="rounded-md" />
                         <div>
                             <h3 className="font-semibold">PRODUCT TITLE</h3>
                             <div className="flex justify-between items-center">
-                                <p className="font-bold text-orange-600">$52.00</p>
+                                <p className="font-semibold text-orange-600">$52.00</p>
                                 <div className="flex items-center gap-1">
                                     <FaStar /><FaStar /><FaStar /><FaStar /><FaRegStarHalfStroke />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="space-y-4 hover:scale-105 transition-all duration-300 shadow-lg rounded-xl overflow-hidden bg-white p-4">
-                        <img src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/7.jpg" alt="" className="rounded-md"/>
+                    <div className="space-y-4 hover:scale-105 transition-all duration-300 ">
+                        <img src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/7.jpg" alt="" className="rounded-md" />
                         <div>
                             <h3 className="font-semibold">PRODUCT TITLE</h3>
                             <div className="flex justify-between items-center">
-                                <p className="font-bold text-orange-600">$52.00</p>
+                                <p className="font-semibold text-orange-600">$52.00</p>
                                 <div className="flex items-center gap-1">
                                     <FaStar /><FaStar /><FaStar /><FaStar /><FaRegStarHalfStroke />
                                 </div>
@@ -236,42 +245,42 @@ function Home() {
                     </div>
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10">
-                    <div className="flex flex-col items-center justify-between bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition-all duration-500">
+                    <div className="flex flex-col items-center justify-between overflow-hidden hover:scale-105 transition-all duration-500">
                         <img
                             src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/blog/111.jpg"
                             alt=""
                             className="h-42 w-full mb-2 object-cover hover:scale-110 transition-transform duration-500"
                         />
-                        <div className="text-sm text-gray-500 space-y-2 p-4">
-                            <h1 className="text-2xl text-black hover:text-orange-600 duration-500 font-semibold">
+                        <div className="text-sm text-gray-500 space-y-2">
+                            <h1 className="text-xl text-black hover:text-orange-600 duration-500 font-semibold">
                                 75 OF RALPH LAURENY
                             </h1>
                             <p>in Fashion | Oct 31, 2014 | 0 comment</p>
                             <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. ...</p>
                         </div>
                     </div>
-                    <div className="flex flex-col items-center justify-between bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition-all duration-500">
+                    <div className="flex flex-col items-center justify-between overflow-hidden hover:scale-105 transition-all duration-500">
                         <img
                             src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/blog/222.jpg"
                             alt=""
                             className="h-42 w-full mb-2 object-cover hover:scale-110 transition-transform duration-500"
                         />
-                        <div className="text-sm text-gray-500 space-y-2 p-4">
-                            <h1 className="text-2xl text-black hover:text-orange-600 duration-500 font-semibold">
+                        <div className="text-sm text-gray-500 space-y-2">
+                            <h1 className="text-xl text-black hover:text-orange-600 duration-500 font-semibold">
                                 75 OF RALPH LAURENY
                             </h1>
                             <p>in Fashion | Oct 31, 2014 | 0 comment</p>
                             <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. ...</p>
                         </div>
                     </div>
-                    <div className="flex flex-col items-center justify-between bg-white shadow-lg rounded-xl overflow-hidden hover:scale-105 transition-all duration-500">
+                    <div className="flex flex-col items-center justify-between overflow-hidden hover:scale-105 transition-all duration-500">
                         <img
                             src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/blog/333.jpg"
                             alt=""
                             className="h-42 w-full mb-2 object-cover hover:scale-110 transition-transform duration-500"
                         />
-                        <div className="text-sm text-gray-500 space-y-2 p-4">
-                            <h1 className="text-2xl text-black hover:text-orange-600 duration-500 font-semibold">
+                        <div className="text-sm text-gray-500 space-y-2">
+                            <h1 className="text-xl text-black hover:text-orange-600 duration-500 font-semibold">
                                 75 OF RALPH LAURENY
                             </h1>
                             <p>in Fashion | Oct 31, 2014 | 0 comment</p>

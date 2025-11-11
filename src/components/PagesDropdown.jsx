@@ -10,11 +10,11 @@ function PageDropdown() {
                 <Link to={"/checkout"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Checkout</Link>
                 <Link to={"/contact"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Contact</Link>
                 <Link to={"/login"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Login</Link>
-                <Link to={"/"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">My Account</Link>
-                <Link to={"/"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Shop</Link>
-                <Link to={"/"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Shop List</Link>
-                <Link to={"/"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Shopping-cart</Link>
-                <Link to={"/"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Single Product</Link>
+                <Link to={"/myaccount"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">My Account</Link>
+                <Link to={"/shop"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Shop</Link>
+                <Link to={"/shop"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Shop List</Link>
+                <Link to={"/shoppingcart"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Shopping-cart</Link>
+                <Link to={"/singleproduct"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Single Product</Link>
                 <Link to={"/wishlist"} className="px-4 py-2 hover:bg-gray-200 cursor-pointer">Wishlist</Link>
             </div>
         </div>

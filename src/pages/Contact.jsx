@@ -38,30 +38,30 @@ function Contact() {
                         <p>tasnm@gmail.com</p>
                     </div>
                 </div>
-                <div className="w-full md:w-[50%] border rounded-md shadow-2xl space-y-6 p-4">
+                <div className="w-full md:w-[50%] border rounded-md shadow-2xl space-y-4 p-8">
                     <h1 className="text-xl font-semibold">Get In Touch</h1>
                     <div>
-                        <label>Name</label>
+                        <label className="text-sm text-gray-600">Name</label>
                         <input
                             type="text"
                             placeholder="Enter your name"
-                            className="border border-gray-500 w-full rounded-md p-2"
+                            className="border border-gray-400 w-full rounded-md outline-none p-2"
                         />
                     </div>
                     <div>
-                        <label>Email</label>
+                        <label className="text-sm text-gray-600">Email</label>
                         <input
                             type="text"
                             placeholder="Enter your email"
-                            className="border border-gray-500 w-full rounded-md p-2"
+                            className="border border-gray-400 w-full rounded-md outline-none p-2"
                         />
                     </div>
                     <div>
-                        <label>Enquiry</label>
+                        <label className="text-sm text-gray-600">Enquiry</label>
                         <input
                             type="text"
                             placeholder="Enter your enquiry"
-                            className="border border-gray-500 w-full rounded-md p-2"
+                            className="border border-gray-400 w-full rounded-md outline-none p-2"
                         />
                     </div>
                     <button className="bg-black p-2 text-white w-full rounded-md">

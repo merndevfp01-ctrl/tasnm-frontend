@@ -149,10 +149,10 @@ function Blog() {
                         </h1>
                         <div className="text-gray-500 text-sm">
                             <h3 className=" border-b pb-2 hover:text-orange-600">That most modern</h3>
-                            <h3 className=" border-b py-2 hover:text-orange-600">That most modern</h3>
-                            <h3 className=" border-b py-2 hover:text-orange-600">That most modern</h3>
-                            <h3 className=" border-b py-2 hover:text-orange-600">That most modern</h3>
-                            <h3 className=" border-b py-2 hover:text-orange-600">That most modern</h3>
+                            <h3 className=" border-b py-2 hover:text-orange-600">Glance into the future of android</h3>
+                            <h3 className=" border-b py-2 hover:text-orange-600">Nullam at tellus vehicula</h3>
+                            <h3 className=" border-b py-2 hover:text-orange-600">Summer Classics in Positano</h3>
+                            <h3 className=" border-b py-2 hover:text-orange-600">Photography Tips From Wai Su</h3>
                         </div>
                     </div>
                     {/* Recent Comments */}
@@ -161,10 +161,7 @@ function Blog() {
                             RECENT COMMENTS
                         </h1>
                         <div className="text-gray-500 text-sm">
-                            <h3 className=" border-b pb-2 hover:text-orange-600">That most modern</h3>
-                            <h3 className=" border-b py-2 hover:text-orange-600">That most modern</h3>
-                            <h3 className=" border-b py-2 hover:text-orange-600">That most modern</h3>
-                            <h3 className=" border-b py-2 hover:text-orange-600">That most modern</h3>
+                            
                         </div>
                     </div>
                     {/* Archives */}

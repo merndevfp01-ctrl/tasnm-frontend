@@ -1,113 +1,68 @@
-import { Facebook, SquareCheckBig } from "lucide-react"
-import { FaFacebookF, FaTwitter } from "react-icons/fa6"
-import { Link } from "react-router-dom"
+import { Eye } from "lucide-react"
 
 function Login() {
     return (
-        <div className="w-full">
-            {/* Head Section */}
-            <div className="relative w-full h-96 overflow-hidden shadow-lg group  ">
-                <img
-                    src="https://as1.ftcdn.net/v2/jpg/17/04/32/58/1000_F_1704325805_aLhcj2PTtIt1q8zHJA6lJH0ILMehjxWl.jpg"
-                    alt="bag"
-                    className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40"></div>
-                <div className="absolute inset-0  flex flex-col item-center justify-center text-center text-white overlay">
-                    <h1 className="text-4xl">LOGIN</h1>
-                    <div className="flex justify-center items-center gap-2 text-sm mt-5">
-                        <Link to={"/"}>
-                            HOME
-                        </Link> |
-                        <p>LOGIN</p>
+        <div className="w-full flex justify-center items-center p-10 md:p-0">
+            <div className="w-full flex flex-col md:flex-row items-center md:max-w-4xl border ">
+                <div className="relative">
+                    <img
+                        src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/12.jpg"
+                        alt=""
+                    />
+                    <div className="absolute inset-0 bg-black/40"></div>
+                    <div className="absolute bottom-5 left-0 text-white right-0 p-10">
+                        <h1 className="text-xl md:text-3xl font-bold">Where style meets you..</h1>
+                        <p className="">Login to find outfits that defines your presonality</p>
                     </div>
                 </div>
-            </div>
-            <div className="flex flex-col md:flex-row justify-between items-start gap-10 p-5 md:p-20">
-                {/* Login */}
-                <div className="w-full md:w-[50%] space-y-6">
-                    <h1 className="text-lg md:text-xl text-gray-800 border-b pb-2">
-                        LOGIN
-                    </h1>
-                    <p className="text-gray-600">
-                        Hello, Welcome your to account
-                    </p>
-                    <div className="flex items-center gap-4">
-                        <div className="w-full bg-blue-900 text-white flex items-center justify-center text-center gap-2 p-2">
-                            <FaFacebookF />
-                            <p className="text-sm">Sign In With Facebook</p>
-                        </div>
-                        <div className="w-full bg-blue-500 text-white flex items-center justify-center text-center gap-2 p-2">
-                            <FaTwitter />
-                            <p className="text-sm">Sign In With Twitter</p>
-                        </div>
-                    </div>
-                    <div className="text-gray-500">
-                        <label>Email Address <span className="text-red-600">*</span></label>
-                        <input
-                            type="text"
-                            className="border h-5 p-5 w-full outline-none"
-                        />
-                    </div>
-                    <div className="text-gray-500">
-                        <label>Password <span className="text-red-600">*</span></label>
-                        <input
-                            type="text"
-                            className="border h-5 p-5 w-full outline-none"
-                        />
-                    </div>
-                    {/* Remember */}
-                    <div className="flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                            <input type="checkbox" />
-                            <label>Remember me <span className="text-red-600">*</span></label>
-                        </div>
-                        <button className="text-orange-600">
-                            Forgot Your Password?
-                        </button>
-                    </div>
-                    {/* Login Button */}
-                    <button className="bg-gray-200 py-2 px-4 text-sm text-gray-500">
-                        LOGIN
-                    </button>
-                </div>
-                {/* New Account */}
-                <div className="w-full md:w-[50%] space-y-6">
-                    <h1 className="text-lg md:text-xl text-gray-800 border-b pb-2">
-                        CREATE A NEW ACCOUNT
-                    </h1>
-                    <p className="text-gray-600">
-                        Hello, Welcome your to account
-                    </p>
-                    <div className="text-gray-500">
-                        <label>Email Address <span className="text-red-600">*</span></label>
-                        <input
-                            type="text"
-                            className="border h-5 p-5 w-full outline-none"
-                        />
-                    </div>
-                    {/* SIGNUP Button */}
-                    <button className="bg-gray-200 py-2 px-4 text-sm text-gray-500">
-                        SIGNUP
-                    </button>
-                    <div className="space-y-6 text-gray-500">
-                        <h1 className="text-lg md:text-xl text-gray-800">
-                            SIGNUP TODAY AND YOU'LL BE ABLE TO:
+                <div className="w-full md:w-[50%] flex flex-col space-y-8 p-5 md:p-10">
+                    <div>
+                        <h1 className="text-xl md:text-2xl text-gray-800 font-semibold">
+                            Welcome back to Tasnm!
                         </h1>
-                        <div className="flex items-center gap-2">
-                            <SquareCheckBig className="h-4 w-4 text-orange-600"/>
-                            <p>Speed your way through the checkout.</p>
+                        <p className="text-sm text-gray-600">Sign in your account</p>
+                    </div>
+                    <div className="w-full space-y-4">
+                        <div className="text-sm text-700 space-y-2">
+                            <label >Email</label>
+                            <input
+                                type="text"
+                                placeholder="Enter email"
+                                className="border rounded-lg w-full p-2"
+                            />
                         </div>
-                        <div className="flex items-center gap-2">
-                            <SquareCheckBig className="h-4 w-4 text-orange-600"/>
-                            <p>Track your orders easily.</p>
+                        <div className="text-sm text-700 space-y-2">
+                            <label >Password</label>
+                            <div className="border rounded-lg w-full flex justify-between items-center ">
+                                <input
+                                    type="text"
+                                    placeholder="Enter password"
+                                    className="w-full p-2 rounded-lg outline-none"
+                                />
+                                <div className="border-l p-2">
+                                    <Eye className="h-4 w-4" />
+                                </div>
+                            </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <SquareCheckBig className="h-4 w-4 text-orange-600"/>
-                            <p>Keep a record of all your purchases.</p>
+                        <div className="flex justify-between items-center text-xs">
+                            <div className="flex items-center gap-2">
+                                <input type="checkbox" />
+                                <label className="text-gray-800">Remember me</label>
+                            </div>
+                            <button className="text-gray-500">
+                                Forgot Password?
+                            </button>
                         </div>
                     </div>
+                    <button className="w-full bg-black text-white rounded-lg py-2">
+                        Login
+                    </button>
+                    <button className="text-xs text-gray-600">
+                        Don't have any account?
+                        <span className="text-blue-500">Register</span>
+                    </button>
                 </div>
+
             </div>
         </div>
     )

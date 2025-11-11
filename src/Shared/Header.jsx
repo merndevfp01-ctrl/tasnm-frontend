@@ -1,4 +1,4 @@
-import { Clock, DollarSign, HeartIcon, Lock, Menu, Phone, Search, ShoppingCart, User, X } from 'lucide-react'
+import { ChevronRight, Clock, DollarSign, HeartIcon, Lock, Menu, Phone, Search, SearchIcon, ShoppingCart, Trash, User, X } from 'lucide-react'
 import react from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -28,35 +28,35 @@ function Header() {
                 </div>
                 <div className='flex gap-4'>
                     <Link
-                        to={"/"}
+                        to={"/myaccount"}
                         className='flex items-center gap-1 hover:text-gray-300'
                     >
                         <User size={14} />
                         My Account
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/shoppingcart"}
                         className='flex items-center gap-1 hover:text-gray-300'
                     >
                         <ShoppingCart size={14} />
                         My Cart
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/wishlist"}
                         className='flex items-center gap-1 hover:text-gray-300'
                     >
                         <HeartIcon size={14} />
                         My Whishlist
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/checkout"}
                         className='flex items-center gap-1 hover:text-gray-300'
                     >
                         <DollarSign size={14} />
                         Checkout
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/login"}
                         className='flex items-center gap-1 hover:text-gray-300'
                     >
                         <Lock size={14} />
@@ -76,11 +76,15 @@ function Header() {
                         HOME
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/shop"}
                         className='hover:text-orange-600'
                     >
                         SHOP
                     </Link>
+                    {/* <div className='relative group cursor-pointer'>
+                        <span className='hover:text-orange-600'>SHOP</span>
+                        <PageDropdown/>
+                    </div> */}
                     <Link
                         to={"/lookbook"}
                         className='hover:text-orange-600'
@@ -101,7 +105,7 @@ function Header() {
                     </Link> */}
                     <div className='relative group cursor-pointer'>
                         <span className='hover:text-orange-600'>PAGES</span>
-                        <PageDropdown/>
+                        <PageDropdown />
                     </div>
                     <Link
                         to={"/about"}
@@ -117,9 +121,96 @@ function Header() {
                     </Link>
                 </div>
                 <div className='hidden md:flex items-center gap-4 text-white'>
-                    <Search size={18} className='cursor-pointer hover:text-gray-300' />
-                    |
-                    <ShoppingCart size={18} className='cursor-pointer hover:text-gray-300' />
+                    <div className='relative group cursor-pointer'>
+                        <Search size={18} className='cursor-pointer hover:text-gray-300' />
+                        <div className="absolute right-0 top-full hidden group-hover:block duration-500 bg-gray-700 text-gray-800 shadow-lg z-50">
+                            <div className='w-full flex items-center text-sm'>
+                                <input
+                                    type="text"
+                                    placeholder='Search products'
+                                    className='p-2 bg-gray-700 text-white outline-none'
+                                />
+                                <div className='bg-gray-900 p-2.5'>
+                                    <SearchIcon className='h-4 w-4 text-white' />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='relative group cursor-pointer'>
+                        <ShoppingCart size={18} className='cursor-pointer hover:text-gray-300' />
+                        <div className='absolute right-0 top-full hidden group-hover:block duration-500 bg-white text-gray-800 w-56 shadow-lg z-50'>
+                            <div className='w-full border-t border-orange-600 flex flex-col items-center gap-4 text-sm p-4'>
+                                <div className='w-full flex items-center gap-2 border-b pb-2'>
+                                    <img
+                                        src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/10.jpg"
+                                        alt=""
+                                        className='h-16 w-16 object-cover'
+                                    />
+                                    <div className='w-full'>
+                                        <div className="flex justify-between items-center">
+                                            <div>
+                                                <h3 className="font-semibold">Shirt</h3>
+                                                <p className="flex items-center gap-1 text-xs">
+                                                    <span>Size:</span>
+                                                    <span className="text-gray-500">Large</span>
+                                                </p>
+                                                <p className="flex items-center gap-1 text-xs">
+                                                    <span>Color:</span>
+                                                    <span className="text-gray-500">Sky Blue</span>
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <Trash className="text-red-600 h-3 w-3" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div className='w-full flex items-center gap-2 border-b pb-2'>
+                                    <img
+                                        src="https://preview.hasthemes.com/tasnm-preview/tasnm/img/products/10.jpg"
+                                        alt=""
+                                        className='h-16 w-16 object-cover rounded-lg'
+                                    />
+                                    <div className='w-full'>
+                                        <div className="flex justify-between items-center">
+                                            <div>
+                                                <h3 className="font-semibold">Shirt</h3>
+                                                <p className="flex items-center gap-1 text-xs">
+                                                    <span>Size:</span>
+                                                    <span className="text-gray-500">Large</span>
+                                                </p>
+                                                <p className="flex items-center gap-1 text-xs">
+                                                    <span>Color:</span>
+                                                    <span className="text-gray-500">Sky Blue</span>
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <Trash className="text-red-600 h-3 w-3" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Total */}
+                                <div className='w-full flex justify-between items-center text-gray-600 border-b pb-2'>
+                                    <p>total</p>
+                                    <p>=$150.00</p>
+                                </div>
+                                {/* Buttons */}
+                                <div className='w-full flex flex-col justify-center items-center space-y-2'>
+                                    <button className='flex items-center gap-2 hover:text-orange-600 hover:duration-300'>
+                                        go to cart
+                                        <ChevronRight className='h-3 w-3'/>
+                                    </button>
+                                    <button className='w-full bg-black text-white text-center py-2'>
+                                        Checkout
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
                 {/*Mobile Menu Button */}
@@ -141,19 +232,19 @@ function Header() {
                         HOME
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/shop"}
                         onClick={() => setOpen(false)}
                     >
                         SHOP
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/lookbook"}
                         onClick={() => setOpen(false)}
                     >
                         LOOKBOOK
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/blog"}
                         onClick={() => setOpen(false)}
                     >
                         BLOG
@@ -165,13 +256,13 @@ function Header() {
                         PAGES
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/about"}
                         onClick={() => setOpen(false)}
                     >
                         ABOUT
                     </Link>
                     <Link
-                        to={"/"}
+                        to={"/contact"}
                         onClick={() => setOpen(false)}
                     >
                         CONTACT

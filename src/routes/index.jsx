@@ -7,6 +7,10 @@ import Lookbook from "../pages/Lookbook"
 import Login from "../pages/Login"
 import Checkout from "../pages/Checkout"
 import Wishlist from "../pages/Wishlist"
+import MyAccount from "../pages/MyAccount"
+import SingleProduct from "../pages/SingleProducts"
+import Shoppingcart from "../pages/Shoppingcart"
+import Shop from "../pages/Shop"
 
 function IndexRoutes(){
     return(
@@ -19,6 +23,10 @@ function IndexRoutes(){
             <Route path="/login" element={<Login/>}/>
             <Route path="/checkout" element={<Checkout/>}/>
             <Route path="/wishlist" element={<Wishlist/>}/>
+            <Route path="/myaccount" element={<MyAccount/>}/>
+            <Route path="/singleproduct" element={<SingleProduct/>}/>
+            <Route path="/shoppingcart" element={<Shoppingcart/>}/>
+            <Route path="/shop" element={<Shop/>}/>
         </Routes>
     )
 
