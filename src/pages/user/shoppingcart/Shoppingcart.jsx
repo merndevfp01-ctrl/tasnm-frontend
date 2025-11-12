@@ -1,9 +1,11 @@
 import { Trash } from "lucide-react"
 import { Link } from "react-router-dom"
+import SiteLayout from "../../layouts/SiteLayout"
 
 function Shoppingcart() {
     return (
-        <div className="w-full py-10 px-10 md:px-20 space-y-6">
+        <SiteLayout>
+<div className="w-full py-10 px-10 md:px-20 space-y-6">
             <div className="flex items-center gap-2">
                 <Link
                 to={"/"}
@@ -150,6 +152,7 @@ function Shoppingcart() {
                 </div>
             </div>
         </div>
+        </SiteLayout>
     )
 }
 

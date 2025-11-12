@@ -1,9 +1,11 @@
 import { Folder } from "lucide-react"
 import { Link } from "react-router-dom"
+import SiteLayout from "../../layouts/SiteLayout"
 
 function Checkout() {
     return (
-        <div className="w-full">
+        <SiteLayout>
+<div className="w-full">
             <div className="relative w-full h-96 overflow-hidden shadow-lg group  ">
                 <img
                     src="https://as1.ftcdn.net/v2/jpg/17/04/32/58/1000_F_1704325805_aLhcj2PTtIt1q8zHJA6lJH0ILMehjxWl.jpg"
@@ -81,6 +83,7 @@ function Checkout() {
                 </div>
             </div>
         </div>
+        </SiteLayout>
     )
 }
 

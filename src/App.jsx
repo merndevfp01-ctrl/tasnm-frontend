@@ -1,20 +1,17 @@
 import { BrowserRouter as Router, useLocation } from 'react-router-dom'
 import './App.css'
-import Routes from './routes/index.jsx'
-import Header from './Shared/Header.jsx'
-import Footer from './Shared/Footer.jsx'
+import Routes from './routes/siteRoutes.jsx'
+import AdminRoutes from './routes/AdminRoutes.jsx'
 
 function App() {
-  const location = useLocation();
-  const hideNavbarAndFooter = location.pathname === "/login";
   return (
-    <>
-      {!hideNavbarAndFooter && <Header />}
+    <Router>
+      <AdminRoutes/>
       <div className='mt-10 md:mt-32'>
         <Routes />
       </div>
-      {!hideNavbarAndFooter && <Footer />}
-    </>
+      
+    </Router>
   )
 }
 

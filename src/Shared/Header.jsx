@@ -119,6 +119,12 @@ function Header() {
                     >
                         CONTACT
                     </Link>
+                    <Link
+                        to={"/admin"}
+                        className='hover:text-orange-600'
+                    >
+                        Admin
+                    </Link>
                 </div>
                 <div className='hidden md:flex items-center gap-4 text-white'>
                     <div className='relative group cursor-pointer'>
