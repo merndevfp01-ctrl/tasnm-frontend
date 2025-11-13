@@ -31,8 +31,8 @@ export default function Orders() {
                         <Search className="h-4 w-4 text-gray-500" />
                     </div>
                     <div className="flex items-center text-xs gap-4">
-                        <button className="border bg-white shadow-sm p-2">Completed</button>
-                        <button className="border bg-white shadow-sm p-2">Pending</button>
+                        <button className="border bg-white hover:bg-gray-50 shadow-sm p-2">Completed</button>
+                        <button className="border bg-white hover:bg-gray-50 shadow-sm p-2">Pending</button>
                     </div>
                 </div>
                 {/* Table */}

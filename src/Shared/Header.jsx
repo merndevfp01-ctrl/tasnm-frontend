@@ -120,10 +120,16 @@ function Header() {
                         CONTACT
                     </Link>
                     <Link
-                        to={"/admin"}
-                        className='hover:text-orange-600'
+                        to={"/login"}
+                        className='text-white bg-orange-600 hover:bg-orange-700 rounded-sm px-3 py-1.5'
                     >
-                        Admin
+                        Login
+                    </Link>
+                    <Link
+                        to={"/register"}
+                        className='border px-3 py-1.5 hover:border-orange-600 hover:text-orange-600'
+                    >
+                        Register
                     </Link>
                 </div>
                 <div className='hidden md:flex items-center gap-4 text-white'>
@@ -207,7 +213,7 @@ function Header() {
                                 <div className='w-full flex flex-col justify-center items-center space-y-2'>
                                     <button className='flex items-center gap-2 hover:text-orange-600 hover:duration-300'>
                                         go to cart
-                                        <ChevronRight className='h-3 w-3'/>
+                                        <ChevronRight className='h-3 w-3' />
                                     </button>
                                     <button className='w-full bg-black text-white text-center py-2'>
                                         Checkout

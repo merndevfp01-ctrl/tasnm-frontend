@@ -11,6 +11,7 @@ import SingleProduct from "../pages/user/singleproducts/SingleProducts"
 import Shoppingcart from "../pages/user/shoppingcart/Shoppingcart"
 import Shop from "../pages/user/shop/Shop"
 import About from "../pages/user/about/About"
+import Register from "../pages/register/register"
 
 function IndexRoutes() {
     return (
@@ -19,6 +20,7 @@ function IndexRoutes() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/lookbook" element={<Lookbook />} />
             <Route path="/checkout" element={<Checkout />} />
