@@ -11,8 +11,8 @@ export default function Sidebar(){
                 </div>
                 <nav className="flex flex-col gap-3 mt-5">
                     <SidebarItem icon={<LayoutDashboard size={18}/>} text="Dashboard" to="/admin"/>
-                    <SidebarItem icon={<ShoppingBag size={18}/>} text="Products" to="/products"/>
-                    <SidebarItem icon={<ShoppingCart size={18}/>} text="Orders" to="/orders"/>
+                    <SidebarItem icon={<ShoppingBag size={18}/>} text="Products" to="/admin/products"/>
+                    <SidebarItem icon={<ShoppingCart size={18}/>} text="Orders" to="/admin/orders"/>
                 </nav>
                 <div className="mt-auto px-2">
                     <SidebarItem icon={<LogOut size={18}/>} text="Logout" to="/admin/logout"/>

@@ -73,7 +73,7 @@ function Login() {
                                     setFormData({ ...formData, email: e.target.value })
                                 }}
                                 placeholder="Enter email"
-                                className="border rounded-lg w-full p-2"
+                                className="border rounded-lg outline-none w-full p-2"
                                 required
                             />
                         </div>

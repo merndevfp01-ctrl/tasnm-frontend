@@ -1,17 +1,30 @@
 import { ArrowLeft, Pen, Plus, Search, Trash } from "lucide-react";
 import AdminLayout from "../../layouts/AdminLayout";
-
-const orders = [
-    { orderId: '001', name: 'Shirt', description: 'Slim Fit', category: 'Electronics', price: '$150.00' },
-    { orderId: '002', name: 'T-shirt', description: '', category: 'Grosary', price: '$150.00' },
-    { orderId: '003', name: 'Jeans', description: '', category: 'Furniture', price: '$150.00' },
-    { orderId: '004', name: 'Watchs', description: 'Smart watch', category: 'Kitchen', price: '$150.00' },
-    { orderId: '005', name: 'Ring', description: 'Jwellary', category: 'Kids', price: '$150.00' },
-    { orderId: '006', name: 'Shoes', description: '', category: 'Shirts', price: '$150.00' },
-    { orderId: '007', name: 'Earbuds', description: 'Accessories', category: 'Jacket', price: '$150.00' },
-]
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Tooltip from "../../../components/Tooltip";
 
 export default function Products() {
+    const [products, setProducts] = useState([]);
+    const [search, setSearch] = useState("");
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch("http://localhost:3000/product/getproduct");
+                const data = await response.json();
+                setProducts(data.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchProducts();
+    }, []);
+
+    const filteredItems = products.filter(product =>
+        product.name.toLowerCase().includes(search.toLowerCase())
+    );
+
     return (
         <AdminLayout>
             <div className="min-h-screen w-full bg-gray-50 space-y-6 p-10">
@@ -27,14 +40,22 @@ export default function Products() {
                 {/* Filters */}
                 <div className="flex justify-between items-center border bg-white shadow-sm  p-4">
                     <div className="flex items-center border border-gray-300 px-3 py-2 gap-2 rounded-md">
-                        <input type="text" className="w-full text-xs outline-none" placeholder="Search by name" />
+                        <input
+                            type="text"
+                            value={search}
+                            onChange={(e) => {
+                                setSearch(e.target.value)
+                            }}
+                            className="w-full text-xs outline-none"
+                            placeholder="Search by name"
+                        />
                         <Search className="h-4 w-4 text-gray-500" />
                     </div>
                     <div className="flex items-center text-sm gap-4">
-                        <button className="flex items-center gap-2 bg-orange-600 text-white rounded-sm shadow-sm p-2">
-                            <Plus className="h-4 w-4"/>
+                        <Link to={"/admin/add-product"} className="flex items-center gap-2 bg-orange-600 hover:bg-orange-500 text-white rounded-md p-2">
+                            <Plus className="h-4 w-4" />
                             Create Product
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 {/* Table */}
@@ -49,6 +70,7 @@ export default function Products() {
                                 <tr className="text-sm">
                                     <th className="text-left h-14">Product Id</th>
                                     <th className="text-left h-14">Name</th>
+                                    <th className="text-left h-14">Image</th>
                                     <th className="text-left h-14">Description</th>
                                     <th className="text-left h-14">Category</th>
                                     <th className="text-left h-14">price</th>
@@ -56,28 +78,45 @@ export default function Products() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {orders.map((items) => {
-                                    return (
-                                        <tr key={items.orderId} className="text-sm text-gray-600 border-t">
-                                            <td className="text-left">#{items.orderId}</td>
-                                            <td className="text-left h-14">{items.name}</td>
-                                            <td className="text-left h-14">{items.description}</td>
-                                            <td className="text-left h-14">{items.category}</td>
-                                            <td className="text-left h-14">{items.price}</td>
-                                            <td className="text-left h-14">
-                                                <div>
-                                                    <button className="bg-white border border-gray-100 shadow-sm rounded-sm text-xs px-2 py-1 mr-2">
-                                                        <Pen size={16} />
-                                                    </button>
-                                                    <button className="text-red-600 bg-white border border-gray-100 shadow-sm text-xs px-2 py-1">
-                                                        <Trash className="h-4 w-4" />
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
+                                {filteredItems.length > 0 ? (
+                                    filteredItems.map((items, index) => {
+                                        return (
+                                            <tr key={items.orderId} className="text-sm text-gray-600 border-t gap-2">
+                                                <td className="text-left p-1">#{index += 1}</td>
+                                                <td className="text-left truncate max-w-12 h-12 p-1">{items.name}</td>
+                                                <td className="text-left h-12 p-1">
+                                                    <img src={`http://localhost:3000${items.image}`} alt="" className="h-16 w-14 object-cover rounded-md" />
+                                                </td>
+                                                <td className="text-left p-1">
+                                                    <Tooltip content={items.description}>
+                                                        <div className="w-20 truncate whitespace-nowrap overflow-hidden text-ellipsis">
+                                                            {items.description}
+                                                        </div>
+                                                    </Tooltip>
+                                                </td>
 
+                                                <td className="text-left h-12 p-1">{items.category}</td>
+                                                <td className="text-left h-12 p-1">${items.price}</td>
+                                                <td className="text-left h-12 p-1">
+                                                    <div>
+                                                        <button className="bg-white border border-gray-100 shadow-sm rounded-sm text-xs px-2 py-1 mr-2">
+                                                            <Pen size={16} />
+                                                        </button>
+                                                        <button className="text-red-600 bg-white border border-gray-100 shadow-sm text-xs px-2 py-1">
+                                                            <Trash className="h-4 w-4" />
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                ) : (
+                                    <tr>
+                                        <td colSpan="6" className="text-center py-4 text-gray-500">
+                                            No products found
+                                        </td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                     </div>
