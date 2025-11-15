@@ -67,7 +67,8 @@ function Header() {
             <nav className={` transition-all duration-500 w-full flex justify-between items-center py-2 px-6 md:px-14
             ${scrolled ? "bg-black shadow-md" : "bg-black"}
                 `}>
-                <img src="src/assets/logo.png" alt="" className='h-6 w-12 md:h-14 md:w-24 object-contain' />
+                {/* <img src="" alt="" className='h-6 w-12 md:h-14 md:w-24 object-contain' /> */}
+                <h1 className='text-3xl font-bold text-white'>TASNM</h1>
                 <div className='hidden md:flex justify-between items-center gap-10 text-sm text-white'>
                     <Link
                         to={"/"}

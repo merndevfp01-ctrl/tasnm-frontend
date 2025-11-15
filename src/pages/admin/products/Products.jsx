@@ -1,12 +1,13 @@
 import { ArrowLeft, Pen, Plus, Search, Trash } from "lucide-react";
 import AdminLayout from "../../layouts/AdminLayout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Tooltip from "../../../components/Tooltip";
 
 export default function Products() {
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -29,9 +30,9 @@ export default function Products() {
         <AdminLayout>
             <div className="min-h-screen w-full bg-gray-50 space-y-6 p-10">
                 <div className="w-full flex items-center gap-4 border bg-white shadow-sm p-4">
-                    <div className="bg-gray-100 p-2 rounded-full">
+                    <botton onClick={()=> navigate(-1)} className="bg-gray-100 p-2 rounded-full">
                         <ArrowLeft />
-                    </div>
+                    </botton>
                     <div>
                         <h1 className="text-2xl font-semibold">Products</h1>
                         <p className="text-xs text-gray-600">Create and manage your orders.</p>
@@ -98,10 +99,10 @@ export default function Products() {
                                                 <td className="text-left h-12 p-1">{items.category}</td>
                                                 <td className="text-left h-12 p-1">${items.price}</td>
                                                 <td className="text-left h-12 p-1">
-                                                    <div>
-                                                        <button className="bg-white border border-gray-100 shadow-sm rounded-sm text-xs px-2 py-1 mr-2">
+                                                    <div className="flex items-center">
+                                                        <Link to={`/admin/add-product/${items._id}`} className="bg-white border border-gray-100 shadow-sm rounded-sm text-xs px-2 py-1 mr-2">
                                                             <Pen size={16} />
-                                                        </button>
+                                                        </Link >
                                                         <button className="text-red-600 bg-white border border-gray-100 shadow-sm text-xs px-2 py-1">
                                                             <Trash className="h-4 w-4" />
                                                         </button>

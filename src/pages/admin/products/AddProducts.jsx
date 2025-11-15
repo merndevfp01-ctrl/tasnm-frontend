@@ -1,11 +1,11 @@
 import { ArrowLeft, Plus } from "lucide-react";
 import AdminLayout from "../../layouts/AdminLayout";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export default function AddProduct() {
-    const id = useParams()
+    const { id } = useParams()
     const [formData, setFormData] = useState({
         name: "",
         image: "",
@@ -15,6 +15,29 @@ export default function AddProduct() {
     });
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    // Fetch Data
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/product/getproduct/${id}`);
+                const data = await response.json()
+                // setFormData(data.data)
+                if (data?.data) {
+                    setFormData({
+                        name: data.data.name,
+                        category: data.data.category,
+                        image: data.data.category,
+                        description: data.data.description,
+                        price: data.data.price
+                    })
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchProducts();
+    }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,24 +51,29 @@ export default function AddProduct() {
         data.append("price", formData.price)
 
         try {
-            const response = await fetch("http://localhost:3000/product/createproduct", {
-                method: "POST",
-                body: data
-            }) 
-
-            if (response.ok) {
-                toast.success("Product added successfully")
-                setTimeout(() => {
-                    navigate("/products")
-                }, 2000)
-                // setFormData({
-                //     name: "",
-                //     description: "",
-                //     category: "",
-                //     price: ""
-                // })
+            if (id) {
+                const response = await fetch(`http://localhost:3000/product/editproduct/${id}`, {
+                    method: "PUT",
+                    body: data
+                })
+                if (response.ok) {
+                    toast.success("Product update successfully")
+                    setTimeout(() => {
+                        navigate("/admin/products")
+                    }, 2000)
+                }
+            } else {
+                const response = await fetch("http://localhost:3000/product/createproduct", {
+                    method: "POST",
+                    body: data
+                })
+                if (response.ok) {
+                    toast.success("Product add successfully")
+                    setTimeout(() => {
+                        navigate("/admin/products")
+                    }, 2000)
+                }
             }
-
         } catch (error) {
             console.log(error)
             toast.dismiss("Failed to add product")
@@ -56,11 +84,13 @@ export default function AddProduct() {
             <div className="w-full bg-gray-50 space-y-6 p-10">
                 {/* Header */}
                 <div className="w-full flex items-center gap-4 border bg-white shadow-sm p-4">
-                    <div className="bg-gray-100 p-2 rounded-full">
+                    <botton onClick={()=> navigate(-1)} className="bg-gray-100 p-2 rounded-full">
                         <ArrowLeft />
-                    </div>
+                    </botton>
                     <div>
-                        <h1 className="text-2xl font-semibold">Add Products</h1>
+                        <h1 className="text-2xl font-semibold">
+                            {id ? "Edit Products" : "Add Products"}
+                        </h1>
                         <p className="text-xs text-gray-600">Create and manage your products.</p>
                     </div>
                 </div>
@@ -132,8 +162,8 @@ export default function AddProduct() {
                         </div>
                     </div>
                     <button type="submit" onClick={handleSubmit} className="flex items-center gap-2 text-sm bg-orange-600 hover:bg-orange-500 text-white rounded-md px-3 py-2">
-                        <Plus size={14}/>
-                        {loading ? "Adding.." : "Add"}
+                        <Plus size={14} />
+                        {id ? "Edit" : "Add"}
                     </button>
                 </div>
             </div>

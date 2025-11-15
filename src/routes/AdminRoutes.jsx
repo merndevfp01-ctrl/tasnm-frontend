@@ -11,6 +11,7 @@ export default function AdminRoutes(){
             <Route path="/admin/orders" element={<Orders/>}/>
             <Route path="/admin/products" element={<Products/>}/>
             <Route path="/admin/add-product" element={<AddProduct/>}/>
+            <Route path="/admin/add-product/:id" element={<AddProduct/>}/>
         </Routes>
     )
 }

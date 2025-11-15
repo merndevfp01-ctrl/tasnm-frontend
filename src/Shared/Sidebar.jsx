@@ -2,6 +2,7 @@ import { LayoutDashboard, LogOut, ShoppingBag, ShoppingCart } from "lucide-react
 import { Link, Outlet } from "react-router-dom";
 
 export default function Sidebar(){
+    
     return (
         <div className="flex h-screen">
             <aside className="group relative flex flex-col p-2 text-black border-r w-16 hover:w-56 transition-all duration-300">

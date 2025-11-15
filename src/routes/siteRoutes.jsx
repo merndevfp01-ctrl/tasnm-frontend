@@ -26,9 +26,9 @@ function IndexRoutes() {
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/myaccount" element={<MyAccount />} />
-            <Route path="/singleproduct" element={<SingleProduct />} />
-            <Route path="/shoppingcart" element={<Shoppingcart />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/singleproduct/:id" element={<SingleProduct />} />
+            <Route path="/shoppingcart" element={<Shoppingcart />} />
         </Routes>
     )
 

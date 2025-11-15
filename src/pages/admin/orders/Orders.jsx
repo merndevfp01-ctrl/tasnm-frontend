@@ -1,5 +1,6 @@
 import { ArrowLeft, Search } from "lucide-react";
 import AdminLayout from "../../layouts/AdminLayout";
+import { useNavigate } from "react-router-dom";
 
 const orders = [
     { orderId: '001', date: '2024-06-01', customer: 'John Doe', category: 'Electronics', status: 'Completed', items: 3, total: '$150.00' },
@@ -12,13 +13,14 @@ const orders = [
 ]
 
 export default function Orders() {
+    const navigate = useNavigate();
     return (
         <AdminLayout>
             <div className="min-h-screen w-full bg-gray-50 space-y-6 p-10">
                 <div className="w-full flex items-center gap-4 border bg-white shadow-sm p-4">
-                    <div className="bg-gray-100 p-2 rounded-full">
+                    <botton onClick={()=> navigate(-1)} className="bg-gray-100 p-2 rounded-full">
                         <ArrowLeft />
-                    </div>
+                    </botton>
                     <div>
                         <h1 className="text-2xl font-semibold">Orders</h1>
                         <p className="text-xs text-gray-600">Track and manage your orders.</p>
