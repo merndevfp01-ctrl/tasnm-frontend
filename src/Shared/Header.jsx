@@ -1,12 +1,14 @@
 import { ChevronRight, Clock, DollarSign, HeartIcon, Lock, Menu, Phone, Search, SearchIcon, ShoppingCart, Trash, User, X } from 'lucide-react'
-import react from 'react'
+import react, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import PageDropdown from '../components/PagesDropdown';
+import { UserContext } from '../context/UserContext';
 
 function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [open, setOpen] = useState(false)
+    const { isAuthenticate, user, logout } = useContext(UserContext)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -120,18 +122,23 @@ function Header() {
                     >
                         CONTACT
                     </Link>
-                    <Link
-                        to={"/login"}
-                        className='text-white bg-orange-600 hover:bg-orange-700 rounded-sm px-3 py-1.5'
-                    >
-                        Login
-                    </Link>
-                    <Link
-                        to={"/register"}
-                        className='border px-3 py-1.5 hover:border-orange-600 hover:text-orange-600'
-                    >
-                        Register
-                    </Link>
+                    {/* Login & Logout */}
+                    {isAuthenticate ? (
+                        <>
+                            <span className='bg-white/20 rounded-full p-2'>Welcome! {user?.name}</span>
+                            <button onClick={logout} className='text-white bg-orange-600 hover:bg-orange-700 rounded-md px-3 py-1.5'>
+                                Logout
+                            </button>
+                        </>
+                    ) :
+                        <Link
+                            to={"/login"}
+                            className='text-white bg-orange-600 hover:bg-orange-700 rounded-md px-3 py-1.5'
+                        >
+                            Login
+                        </Link>
+                    }
+
                 </div>
                 <div className='hidden md:flex items-center gap-4 text-white'>
                     <div className='relative group cursor-pointer'>

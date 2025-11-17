@@ -1,8 +1,15 @@
 import { LayoutDashboard, LogOut, ShoppingBag, ShoppingCart } from "lucide-react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
 
-export default function Sidebar(){
-    
+export default function Sidebar() {
+    const {logout} = useContext(UserContext);
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        logout();
+        navigate("/login")
+    }
     return (
         <div className="flex h-screen">
             <aside className="group relative flex flex-col p-2 text-black border-r w-16 hover:w-56 transition-all duration-300">
@@ -11,12 +18,16 @@ export default function Sidebar(){
                     <span className="group-hover:block hidden transition-all">Tasnm</span>
                 </div>
                 <nav className="flex flex-col gap-3 mt-5">
-                    <SidebarItem icon={<LayoutDashboard size={18}/>} text="Dashboard" to="/admin"/>
-                    <SidebarItem icon={<ShoppingBag size={18}/>} text="Products" to="/admin/products"/>
-                    <SidebarItem icon={<ShoppingCart size={18}/>} text="Orders" to="/admin/orders"/>
+                    <SidebarItem icon={<LayoutDashboard size={18} />} text="Dashboard" to="/admin" />
+                    <SidebarItem icon={<ShoppingBag size={18} />} text="Products" to="/admin/products" />
+                    <SidebarItem icon={<ShoppingCart size={18} />} text="Orders" to="/admin/orders" />
                 </nav>
                 <div className="mt-auto px-2">
-                    <SidebarItem icon={<LogOut size={18}/>} text="Logout" to="/admin/logout"/>
+                    {/* <SidebarItem icon={<LogOut size={18}/>} text="Logout" to="/admin/logout"/> */}
+                    <button onClick={handleLogout} className="flex items-center text-red-600 gap-4">
+                        <LogOut size={18} />
+                        <span className="whitespace-nowrap hidden group-hover:block transition-all">Logout</span>
+                    </button>
                 </div>
             </aside>
 

@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <AdminRoutes/>
-      <div className='mt-10 md:mt-32'>
+      <div className='mt-10 md:mt-26'>
         <Routes />
       </div>
       <ToastContainer /> 

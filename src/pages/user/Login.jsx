@@ -1,9 +1,11 @@
 import { Eye } from "lucide-react"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
 
 function Login() {
     const navigate = useNavigate();
+    const { login } = useContext(UserContext)
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -24,10 +26,9 @@ function Login() {
             })
             const data = await response.json();
             if (response.ok && data.success) {
-                const { token, user } = data.data
+                const { token, user, admin } = data.data
 
-                localStorage.setItem("token", token);
-                localStorage.setItem("role", user.role);
+                login(user, token, admin);
 
                 setTimeout(() => {
                     if (user.role === "admin") {
