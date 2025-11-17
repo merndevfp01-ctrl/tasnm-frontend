@@ -13,7 +13,7 @@ export default function Register() {
         e.preventDefault();
         setLoading(true)
         try {
-            const response = await fetch("http://localhost:3000/auth/register", {
+            const response = await fetch("https://tasnm-backend.vercel.app/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json"

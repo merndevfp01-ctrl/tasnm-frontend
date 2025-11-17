@@ -1,26 +1,52 @@
-import { ArrowLeft, Pen, Plus, Search, Trash } from "lucide-react";
+import { ArrowLeft, Pen, Plus, RefreshCcw, Search, Trash } from "lucide-react";
 import AdminLayout from "../../layouts/AdminLayout";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Tooltip from "../../../components/Tooltip";
+import { Api } from "../../../api/Api";
+import { toast } from "react-toastify";
 
 export default function Products() {
     const [products, setProducts] = useState([]);
     const [search, setSearch] = useState("");
     const navigate = useNavigate();
 
+    const fetchProducts = async () => {
+        const data = Api.get("/product/getproduct")
+        data.then((res) => {
+            console.log("res", res)
+            setProducts(res?.data.data)
+        }).catch((err) => {
+            console.log("err", err)
+        })
+    };
+
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch("http://localhost:3000/product/getproduct");
-                const data = await response.json();
-                setProducts(data.data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
         fetchProducts();
     }, []);
+
+    let productResponse;
+    const handledelete = (_id) => {
+        productResponse = Api.put(`/product/deleteproduct/${_id}`)
+        productResponse.then((res) => {
+            console.log("res", res)
+            toast.success("Product deleted successfully.")
+            fetchProducts()
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    const handleRestore = (_id) => {
+        productResponse = Api.put(`/product/restoreProduct/${_id}`)
+        productResponse.then((res) => {
+            console.log("res", res)
+            toast.success("Product restore successfully.")
+            fetchProducts()
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
 
     const filteredItems = products.filter(product =>
         product.name.toLowerCase().includes(search.toLowerCase())
@@ -30,7 +56,7 @@ export default function Products() {
         <AdminLayout>
             <div className="min-h-screen w-full bg-gray-50 space-y-6 p-10">
                 <div className="w-full flex items-center gap-4 border bg-white shadow-sm p-4">
-                    <botton onClick={()=> navigate(-1)} className="bg-gray-100 p-2 rounded-full">
+                    <botton onClick={() => navigate(-1)} className="bg-gray-100 p-2 rounded-full">
                         <ArrowLeft />
                     </botton>
                     <div>
@@ -82,7 +108,7 @@ export default function Products() {
                                 {filteredItems.length > 0 ? (
                                     filteredItems.map((items, index) => {
                                         return (
-                                            <tr key={items.orderId} className="text-sm text-gray-600 border-t gap-2">
+                                            <tr key={items._id} className="text-sm text-gray-600 border-t gap-2">
                                                 <td className="text-left p-1">#{index += 1}</td>
                                                 <td className="text-left truncate max-w-12 h-12 p-1">{items.name}</td>
                                                 <td className="text-left h-12 p-1">
@@ -99,13 +125,24 @@ export default function Products() {
                                                 <td className="text-left h-12 p-1">{items.category}</td>
                                                 <td className="text-left h-12 p-1">${items.price}</td>
                                                 <td className="text-left h-12 p-1">
-                                                    <div className="flex items-center">
+                                                    <div className={"flex items-center"}>
                                                         <Link to={`/admin/add-product/${items._id}`} className="bg-white border border-gray-100 shadow-sm rounded-sm text-xs px-2 py-1 mr-2">
                                                             <Pen size={16} />
                                                         </Link >
-                                                        <button className="text-red-600 bg-white border border-gray-100 shadow-sm text-xs px-2 py-1">
-                                                            <Trash className="h-4 w-4" />
-                                                        </button>
+                                                        {items.isDeleted ?
+                                                            <button
+                                                            onClick={() => handleRestore(items._id)}
+                                                                className="text-green-600 bg-white border border-gray-100 shadow-sm text-xs px-2 py-1"
+                                                            >
+                                                                <RefreshCcw className="h-4 w-4" />
+                                                            </button> :
+                                                            <button
+                                                                onClick={() => handledelete(items._id)}
+                                                                className="text-red-600 bg-white border border-gray-100 shadow-sm text-xs px-2 py-1"
+                                                            >
+                                                                <Trash className="h-4 w-4" />
+                                                            </button>
+                                                        }
                                                     </div>
                                                 </td>
                                             </tr>

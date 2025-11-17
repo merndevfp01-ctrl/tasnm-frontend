@@ -15,7 +15,7 @@ function Shop() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch("http://localhost:3000/product/getproduct")
+                const response = await fetch("https://tasnm-backend.vercel.app/product/getproduct")
                 const data = await response.json();
                 setProducts(data.data)
 
@@ -136,7 +136,7 @@ function Shop() {
                                 <div key={data._id} className="space-y-4 p-4">
                                     <button type="button" onClick={() => navigate(`/singleproduct/${data._id}`)} className="w-full">
                                         <img
-                                            src={`http://localhost:3000${data.image}`}
+                                            src={`https://tasnm-backend.vercel.app${data.image}`}
                                             alt=""
                                             className="h-80 w-full"
                                         />

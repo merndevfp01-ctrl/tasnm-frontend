@@ -3,6 +3,7 @@ import AdminLayout from "../../layouts/AdminLayout";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Api } from "../../../api/Api";
 
 export default function AddProduct() {
     const { id } = useParams()
@@ -16,75 +17,58 @@ export default function AddProduct() {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
+    const fetchProducts = async () => {
+        const data = Api.get(`http://localhost:3000/product/getproduct/${id}`)
+        data.then((res) => {
+            console.log("res", res?.data.data)
+            setFormData({
+                name: res?.data.data.name,
+                category: res?.data.data.category,
+                image: res?.data.data.image,
+                description: res?.data.data.description,
+                price: res?.data.data.price
+            })
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
     // Fetch Data
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch(`http://localhost:3000/product/getproduct/${id}`);
-                const data = await response.json()
-                // setFormData(data.data)
-                if (data?.data) {
-                    setFormData({
-                        name: data.data.name,
-                        category: data.data.category,
-                        image: data.data.category,
-                        description: data.data.description,
-                        price: data.data.price
-                    })
-                }
-            } catch (error) {
-                console.log(error)
-            }
-        }
         fetchProducts();
     }, [])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true)
-
         const data = new FormData();
         data.append("name", formData.name);
         data.append("image", formData.image);
         data.append("category", formData.category);
         data.append("description", formData.description);
         data.append("price", formData.price)
-
-        try {
-            if (id) {
-                const response = await fetch(`http://localhost:3000/product/editproduct/${id}`, {
-                    method: "PUT",
-                    body: data
-                })
-                if (response.ok) {
-                    toast.success("Product update successfully")
-                    setTimeout(() => {
-                        navigate("/admin/products")
-                    }, 2000)
-                }
-            } else {
-                const response = await fetch("http://localhost:3000/product/createproduct", {
-                    method: "POST",
-                    body: data
-                })
-                if (response.ok) {
-                    toast.success("Product add successfully")
-                    setTimeout(() => {
-                        navigate("/admin/products")
-                    }, 2000)
-                }
-            }
-        } catch (error) {
-            console.log(error)
-            toast.dismiss("Failed to add product")
+        let productresponse;
+        if (id) {
+            productresponse = await Api.put(`/product/editproduct/${id}`, data)
+        } else {
+            productresponse = await Api.post("/product/createproduct", data)
         }
+        productresponse.then((res) => {
+            console.log("res",res)
+            toast.success(id ? "Product add successfully" : "Product update successfully");
+            setTimeout(() => {
+                navigate("/admin/products")
+            }, 1000)
+        }).catch((error) => {
+            console.log(error)
+        })
     }
     return (
         <AdminLayout>
             <div className="w-full bg-gray-50 space-y-6 p-10">
                 {/* Header */}
                 <div className="w-full flex items-center gap-4 border bg-white shadow-sm p-4">
-                    <botton onClick={()=> navigate(-1)} className="bg-gray-100 p-2 rounded-full">
+                    <botton onClick={() => navigate(-1)} className="bg-gray-100 p-2 rounded-full">
                         <ArrowLeft />
                     </botton>
                     <div>
