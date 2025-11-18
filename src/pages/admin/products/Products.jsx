@@ -12,7 +12,7 @@ export default function Products() {
     const navigate = useNavigate();
 
     const fetchProducts = async () => {
-        const data = Api.get("/product/getproduct")
+        const data = Api.get("/product/getproductadmin")
         data.then((res) => {
             console.log("res", res)
             setProducts(res?.data.data)
@@ -92,7 +92,7 @@ export default function Products() {
                     </div>
 
                     <div className="w-full py-5 px-10">
-                        <table className="w-full overflow-x-auto">
+                        <table className="w-full border-collapse overflow-x-auto">
                             <thead>
                                 <tr className="text-sm">
                                     <th className="text-left h-14">Product Id</th>
@@ -108,8 +108,8 @@ export default function Products() {
                                 {filteredItems.length > 0 ? (
                                     filteredItems.map((items, index) => {
                                         return (
-                                            <tr key={items._id} className="text-sm text-gray-600 border-t gap-2">
-                                                <td className="text-left p-1">#{index += 1}</td>
+                                            <tr key={items._id} className={`text-sm text-gray-600 border-t ${items.isDeleted ? "bg-red-500 text-white" : "text-gray-600"}`}>
+                                                <td className="text-left p-1">#{index + 1}</td>
                                                 <td className="text-left truncate max-w-12 h-12 p-1">{items.name}</td>
                                                 <td className="text-left h-12 p-1">
                                                     <img src={`http://localhost:3000${items.image}`} alt="" className="h-16 w-14 object-cover rounded-md" />
@@ -126,12 +126,12 @@ export default function Products() {
                                                 <td className="text-left h-12 p-1">${items.price}</td>
                                                 <td className="text-left h-12 p-1">
                                                     <div className={"flex items-center"}>
-                                                        <Link to={`/admin/add-product/${items._id}`} className="bg-white border border-gray-100 shadow-sm rounded-sm text-xs px-2 py-1 mr-2">
+                                                        <Link to={`/admin/add-product/${items._id}`} className="bg-white border border-gray-100 text-gray-600 shadow-sm rounded-sm text-xs px-2 py-1 mr-2">
                                                             <Pen size={16} />
                                                         </Link >
                                                         {items.isDeleted ?
                                                             <button
-                                                            onClick={() => handleRestore(items._id)}
+                                                                onClick={() => handleRestore(items._id)}
                                                                 className="text-green-600 bg-white border border-gray-100 shadow-sm text-xs px-2 py-1"
                                                             >
                                                                 <RefreshCcw className="h-4 w-4" />

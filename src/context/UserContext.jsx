@@ -63,4 +63,3 @@ export default function UserContextProvider(props) {
     </>
 }
 
-// export const useAuth = () => useContext(UserContext);

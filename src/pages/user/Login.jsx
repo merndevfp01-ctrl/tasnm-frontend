@@ -31,7 +31,7 @@ function Login() {
                 login(user, token, admin);
 
                 setTimeout(() => {
-                    if (user.role === "admin") {
+                    if (user.role === "1") {
                         navigate("/admin")
                     } else {
                         navigate("/")

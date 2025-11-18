@@ -51,9 +51,9 @@ function Home() {
                         <p className="text-lg md:text-3xl font-semibold">NEW COLLECTION</p>
                         <p className="text-2xl hidden md:inline md:text-8xl font-medium drop-shadow-lg">MEN’s FASHION</p>
                         <p className="text-2xl hidden md:inline">Save Up To 40% Off</p>
-                        <button className="border py-1 px-2 md:py-2 md:px-4 hover:bg-orange-600 bg-orange-500/90 rounded-lg shadow-md transition-all duration-300 hover:scale-105">
+                        <Link to={"/shop"} className="py-1 px-2 md:py-2 md:px-4 hover:bg-orange-700 bg-orange-600 rounded-lg shadow-md transition-all duration-300 hover:scale-105">
                             Shop Now
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 <div className="w-full flex flex-col md:flex-row justify-between items-center gap-2 p-8 md:p-20">

@@ -1,14 +1,20 @@
 import { ChevronRight, Clock, DollarSign, HeartIcon, Lock, Menu, Phone, Search, SearchIcon, ShoppingCart, Trash, User, X } from 'lucide-react'
 import react, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import PageDropdown from '../components/PagesDropdown';
 import { UserContext } from '../context/UserContext';
 
 function Header() {
+    const navigate = useNavigate();
     const [scrolled, setScrolled] = useState(false);
     const [open, setOpen] = useState(false)
     const { isAuthenticate, user, logout } = useContext(UserContext)
+
+    const handlelogout = () => {
+        logout()
+        navigate("/login")
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -126,7 +132,7 @@ function Header() {
                     {isAuthenticate ? (
                         <>
                             <span className='bg-white/20 rounded-full p-2'>Welcome! {user?.name}</span>
-                            <button onClick={logout} className='text-white bg-orange-600 hover:bg-orange-700 rounded-md px-3 py-1.5'>
+                            <button onClick={handlelogout} className='text-white bg-orange-600 hover:bg-orange-700 rounded-md px-3 py-1.5'>
                                 Logout
                             </button>
                         </>

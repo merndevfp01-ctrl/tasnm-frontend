@@ -4,6 +4,7 @@ import { ArrowRight, LayoutGrid, Menu, Search } from "lucide-react"
 import { FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import SiteLayout from "../../layouts/SiteLayout";
+import { Api } from "../../../api/Api";
 
 function Shop() {
     const navigate = useNavigate()
@@ -12,29 +13,26 @@ function Shop() {
     const [currentPage, setCurrentPage] = useState(1);
     const itemPerPage = 9;
 
+    const fetchProducts = () => {
+        const data = Api.get("http://localhost:3000/product/getproduct")
+        data.then((res) => {
+            setProducts(res?.data.data)
+            const unique = [...new Set(res?.data.data.map(p => p.category))];
+            setCategories(unique)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch("https://tasnm-backend.vercel.app/product/getproduct")
-                const data = await response.json();
-                setProducts(data.data)
-
-                const unique = [...new Set(data.data.map(p => p.category))];
-                setCategories(unique)
-            } catch (error) {
-                console.log(error)
-            }
-        }
         fetchProducts();
-
     }, []);
 
     //Calculate Index
-    const indexOfLastItem = currentPage * itemPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemPerPage;
-    const currentItem = products.slice(indexOfFirstItem, indexOfLastItem);
-    //Total Pages
-    const totalPages = products.slice(products.length / itemPerPage);
+    // const indexOfLastItem = currentPage * itemPerPage;
+    // const indexOfFirstItem = indexOfLastItem - itemPerPage;
+    // const currentItem = products.slice(indexOfFirstItem, indexOfLastItem);
+    // const totalPages = products.slice(products.length / itemPerPage);
 
     return (
         <SiteLayout>
@@ -132,13 +130,13 @@ function Shop() {
                         </div>
                         {/* Products */}
                         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 border-b pb-4">
-                            {currentItem.map((data) => (
+                            {products.map((data) => (
                                 <div key={data._id} className="space-y-4 p-4">
                                     <button type="button" onClick={() => navigate(`/singleproduct/${data._id}`)} className="w-full">
                                         <img
-                                            src={`https://tasnm-backend.vercel.app${data.image}`}
+                                            src={`http://localhost:3000${data.image}`}
                                             alt=""
-                                            className="h-80 w-full"
+                                            className="h-80 w-80 object-cover"
                                         />
                                         <div className="text-start text-sm mt-2">
                                             <h3 className="">{data.name}</h3>
@@ -168,7 +166,7 @@ function Shop() {
                         </button> */}
 
                             {/* Page numbers */}
-                            {[...Array(totalPages)].map((_, i) => (
+                            {/* {[...Array(totalPages)].map((_, i) => (
                                 <button
                                     key={i}
                                     onClick={() => setCurrentPage(i + 1)}
@@ -184,7 +182,7 @@ function Shop() {
                                 className=""
                             >
                                 <ArrowRight className="h-5 w-5" />
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </div>

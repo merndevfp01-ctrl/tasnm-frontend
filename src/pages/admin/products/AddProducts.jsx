@@ -49,9 +49,9 @@ export default function AddProduct() {
         data.append("price", formData.price)
         let productresponse;
         if (id) {
-            productresponse = await Api.put(`/product/editproduct/${id}`, data)
+            productresponse = Api.put(`/product/editproduct/${id}`, data)
         } else {
-            productresponse = await Api.post("/product/createproduct", data)
+            productresponse = Api.post("/product/createproduct", data)
         }
         productresponse.then((res) => {
             console.log("res",res)
