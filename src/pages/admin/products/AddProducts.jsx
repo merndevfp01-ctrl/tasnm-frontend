@@ -14,7 +14,6 @@ export default function AddProduct() {
         description: "",
         price: ""
     });
-    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const fetchProducts = async () => {
@@ -40,7 +39,7 @@ export default function AddProduct() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true)
+
         const data = new FormData();
         data.append("name", formData.name);
         data.append("image", formData.image);

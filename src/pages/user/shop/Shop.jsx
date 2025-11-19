@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Shipping from "../../../components/Shipping"
-import { ArrowRight, LayoutGrid, Menu, Search } from "lucide-react"
+import { LayoutGrid, Menu } from "lucide-react"
 import { FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import SiteLayout from "../../layouts/SiteLayout";
@@ -10,8 +10,6 @@ function Shop() {
     const navigate = useNavigate()
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemPerPage = 9;
 
     const fetchProducts = () => {
         const data = Api.get("http://localhost:3000/product/getproduct")
@@ -27,6 +25,23 @@ function Shop() {
     useEffect(() => {
         fetchProducts();
     }, []);
+
+    const handleSubmit = (id) => {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const userId = user?._id;
+        const cartResponse = Api.post(`http://localhost:3000/cart/addcart/${id}`, {
+            product: id,
+            user: userId
+        });
+        cartResponse.then((res) => {
+            console.log(res);
+            setTimeout(() => {
+                navigate("/shoppingcart")
+            })
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
 
     //Calculate Index
     // const indexOfLastItem = currentPage * itemPerPage;
@@ -136,7 +151,7 @@ function Shop() {
                                         <img
                                             src={`http://localhost:3000${data.image}`}
                                             alt=""
-                                            className="h-80 w-80 object-cover"
+                                            className="h-80 w-full object-cover"
                                         />
                                         <div className="text-start text-sm mt-2">
                                             <h3 className="">{data.name}</h3>
@@ -148,7 +163,7 @@ function Shop() {
                                             </div>
                                         </div>
                                     </button>
-                                    <button className="w-full text-orange-600 border border-orange-600 rounded-md p-2 mt-2">
+                                    <button type="submit" onClick={() => handleSubmit(data._id)} className="w-full text-orange-600 border border-orange-600 rounded-md p-2 mt-2">
                                         Add to cart
                                     </button>
                                 </div>
